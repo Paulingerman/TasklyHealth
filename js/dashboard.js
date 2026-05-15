@@ -6,7 +6,7 @@
 function getDayTasks() {
   const r = S.routine;
   const t = [];
-  if (r.waterGoal)         t.push({ key:'water',     label:`Ingestao de ${r.waterGoal}L de agua`, color:'var(--blue)',   icon:'bx-droplet' });
+  if (r.waterGoal)         t.push({ key:'water',     label:`Ingestao de ${r.waterGoal}L de água`, color:'var(--blue)',   icon:'bx-droplet' });
   if (r.exercises?.length) t.push({ key:'exercise',  label:'Completar treino do dia',              color:'var(--accent)', icon:'bx-dumbbell' });
   if (r.breakfast)         t.push({ key:'breakfast', label:'Cafe da manha registrado',             color:'var(--amber)',  icon:'bx-coffee' });
   if (r.lunch)             t.push({ key:'lunch',     label:'Almoco registrado',                    color:'var(--amber)',  icon:'bxs-bowl-hot' });
@@ -52,7 +52,7 @@ function renderDashboard() {
     tl.innerHTML = `
       <div class="empty" style="border:none;padding:1rem">
         <div class="empty-icon"><i class='bx bx-calendar'></i></div>
-        <p class="empty-desc">Configure sua rotina para comecar</p>
+        <p class="empty-desc">Configure sua rotina para começar</p>
         <button class="btn btn-primary btn-sm" style="margin-top:.75rem" onclick="go('routine')">Configurar</button>
       </div>`;
   } else {

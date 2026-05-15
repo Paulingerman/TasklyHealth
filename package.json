@@ -1,0 +1,22 @@
+{
+  "name": "taskly-health",
+  "version": "3.0.0",
+  "description": "Aplicação web local para organização de rotina saudável, hidratação, treinos, alimentação e progresso.",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend run dev",
+    "install:backend": "npm --prefix backend install",
+    "check:js": "node --check js/*.js && node --check backend/server.js"
+  },
+  "keywords": [
+    "saude",
+    "rotina",
+    "hidratacao",
+    "treinos",
+    "alimentacao",
+    "progresso"
+  ],
+  "author": "paulingerman <paulogo9009@gmail.com>",
+  "license": "MIT"
+}

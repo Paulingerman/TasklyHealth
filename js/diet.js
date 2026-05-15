@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   diet.js — Alimentacao local, fichas, alimentos customizados e historico
+   diet.js — Alimentação local, fichas, alimentos customizados e histórico
 ═══════════════════════════════════════════════════════════════ */
 
 let foodTimer = null;
@@ -333,7 +333,7 @@ function renderDietHistory() {
   if (!wrap) return;
   const dates = Object.keys(S.dietLog || {}).sort().reverse().slice(0, 10);
   if (!dates.length) {
-    wrap.innerHTML = `<div class="empty-inline">Nenhum historico alimentar ainda.</div>`;
+    wrap.innerHTML = `<div class="empty-inline">Nenhum histórico alimentar ainda.</div>`;
     return;
   }
   wrap.innerHTML = dates.map(d => {

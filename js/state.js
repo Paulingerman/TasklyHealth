@@ -71,7 +71,7 @@ function normalizeState() {
 }
 
 async function call() {
-  throw new Error('Este projeto esta em modo local. Nao existe API ou banco de dados.');
+  throw new Error('Este projeto esta em modo local. Não existe API ou banco de dados.');
 }
 
 async function persist(type, data) {
@@ -146,7 +146,7 @@ async function importLocalDataFromFile(file) {
   const text = await file.text();
   let data;
   try { data = JSON.parse(text); }
-  catch (e) { toast('Arquivo JSON invalido.', 'error'); return; }
+  catch (e) { toast('Arquivo JSON inválido.', 'error'); return; }
 
   const imported = {
     user: data.user || null,
@@ -184,7 +184,7 @@ async function importLocalDataFromFile(file) {
 }
 
 function wipeLocalData() {
-  if (!confirm('Apagar todos os dados locais deste navegador? Essa acao nao pode ser desfeita.')) return;
+  if (!confirm('Apagar todos os dados locais deste navegador? Essa ação não pode ser desfeita.')) return;
   Object.values(STORAGE_KEYS).forEach(k => ls(k, null));
   S = {
     user: null,

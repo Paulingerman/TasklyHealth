@@ -4,9 +4,9 @@
 
 const CRUMBS = {
   dashboard: 'Dashboard',
-  hydration: 'Hidratacao',
-  exercises: 'Exercicios',
-  diet:      'Alimentacao',
+  hydration: 'Hidratação',
+  exercises: 'Exercícios',
+  diet:      'Alimentação',
   routine:   'Minha Rotina',
   progress:  'Progresso',
   profile:   'Perfil',
@@ -35,7 +35,7 @@ async function loadPage(name) {
     root.innerHTML = `
       <div class="page-loading">
         <i class='bx bx-loader-alt bx-spin'></i>
-        Carregando pagina...
+        Carregando página...
       </div>`;
 
     try {
@@ -46,13 +46,13 @@ async function loadPage(name) {
       root.innerHTML = `
         <div class="empty" style="margin-top:1rem">
           <div class="empty-icon"><i class='bx bx-error-circle'></i></div>
-          <h3 class="empty-title">Nao consegui carregar esta pagina</h3>
+          <h3 class="empty-title">Não consegui carregar esta página</h3>
           <p class="empty-desc">
             Rode o projeto pelo servidor, por exemplo <strong>npm start</strong> dentro da pasta backend,
             e acesse pelo navegador em <strong>http://localhost:3000</strong>.
           </p>
         </div>`;
-      console.error('Erro ao carregar pagina:', file, err);
+      console.error('Erro ao carregar página:', file, err);
       return;
     }
   }
@@ -146,7 +146,7 @@ function bootApp() {
   const u = S.user;
   document.getElementById('sbAvatar').textContent = u?.name?.[0]?.toUpperCase() || '?';
   document.getElementById('sbName').textContent   = u?.name  || '—';
-  document.getElementById('sbGoal').textContent   = GOAL_LABELS[u?.goal] || 'Saude Geral';
+  document.getElementById('sbGoal').textContent   = GOAL_LABELS[u?.goal] || 'Saúde Geral';
   go('dashboard');
 }
 
