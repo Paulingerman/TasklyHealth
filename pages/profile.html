@@ -1,0 +1,72 @@
+<main class="page active" id="page-profile">
+      <div class="page-eyebrow">Conta</div>
+      <h1 class="page-title">Perfil</h1>
+      <p class="page-sub">Gerencie seus dados locais, backup e configuracoes</p>
+
+      <div class="prof-layout">
+        <!-- Card do avatar -->
+        <div>
+          <div class="prof-card">
+            <div class="prof-avatar-wrap">
+              <div class="prof-avatar" id="profAv">?</div>
+              <div class="prof-avatar-ring"></div>
+            </div>
+            <div class="prof-name"       id="profName">—</div>
+            <div class="prof-email"      id="profEmail">—</div>
+            <div class="prof-goal-badge" id="profGoalBadge"><i class='bx bx-target-lock'></i>—</div>
+            <div class="imc-block" id="imcBlock" style="display:none">
+              <div class="imc-val"  id="imcVal">—</div>
+              <div class="imc-label">IMC</div>
+              <div class="imc-cat"  id="imcCat">—</div>
+            </div>
+            <p class="version-str">Taskly Health Local v3.0.0</p>
+          </div>
+        </div>
+
+        <!-- Formulário e resumo -->
+        <div style="display:flex;flex-direction:column;gap:1.25rem">
+          <div class="card">
+            <div class="card-title"><i class='bx bx-edit-alt'></i>Editar dados pessoais</div>
+            <div class="field field-icon-wrap">
+              <i class='bx bx-user fi-icon'></i>
+              <input type="text" class="field-input" id="profNameIn" placeholder="Nome completo">
+            </div>
+            <div class="field-row" style="margin-bottom:.875rem">
+              <input type="number" class="field-input" id="profWeightIn" placeholder="Peso (kg)">
+              <input type="number" class="field-input" id="profHeightIn" placeholder="Altura (cm)">
+            </div>
+            <label class="field-label">Objetivo</label>
+            <div class="goal-grid" id="profGoalGrid">
+              <button class="goal-opt" data-g="perda_peso"  onclick="pickGoal(this,'profGoalGrid')"><div class="goal-opt-icon"><i class='bx bx-trending-down'></i></div><span class="goal-opt-label">Perder Peso</span></button>
+              <button class="goal-opt" data-g="manutencao"  onclick="pickGoal(this,'profGoalGrid')"><div class="goal-opt-icon"><i class='bx bx-slider-alt'></i></div><span class="goal-opt-label">Manter Peso</span></button>
+              <button class="goal-opt" data-g="ganho_massa" onclick="pickGoal(this,'profGoalGrid')"><div class="goal-opt-icon"><i class='bx bx-trending-up'></i></div><span class="goal-opt-label">Ganhar Massa</span></button>
+              <button class="goal-opt" data-g="saude_geral" onclick="pickGoal(this,'profGoalGrid')"><div class="goal-opt-icon"><i class='bxs-leaf bx'></i></div><span class="goal-opt-label">Saude Geral</span></button>
+            </div>
+            <button class="btn btn-primary" onclick="saveProfile()">
+              <i class='bx bx-save'></i>Salvar alteracoes
+            </button>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><i class='bx bx-calendar'></i>Resumo da rotina</div>
+            <div id="routineSummary"></div>
+          </div>
+
+
+
+          <div class="card">
+            <div class="card-title"><i class='bx bx-data'></i>Backup local</div>
+            <p class="saved-meals-sub" style="margin-top:-.35rem">Exporte seus dados para nao perder nada se limpar o navegador. Depois voce pode importar o JSON novamente.</p>
+            <div class="backup-actions">
+              <button class="btn btn-primary" onclick="exportLocalData()"><i class='bx bx-download'></i>Exportar dados</button>
+              <label class="btn btn-outline" for="importBackupInput"><i class='bx bx-upload'></i>Importar dados</label>
+              <input type="file" id="importBackupInput" accept="application/json" style="display:none" onchange="importLocalDataFromFile(this.files[0])">
+              <button class="btn btn-danger" onclick="wipeLocalData()"><i class='bx bx-trash'></i>Apagar tudo</button>
+            </div>
+          </div>
+          <button class="btn btn-danger btn-full" onclick="doLogout()">
+            <i class='bx bx-log-out'></i>Fechar perfil local
+          </button>
+        </div>
+      </div>
+    </main>

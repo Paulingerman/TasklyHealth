@@ -1,0 +1,85 @@
+<main class="page active" id="page-exercises">
+  <div class="page-eyebrow">Treinos locais</div>
+  <div class="modern-page-head">
+    <div>
+      <h1 class="page-title">Exercícios</h1>
+      <p class="page-sub">Fichas rápidas, catálogo limpo e registro de treino sem bagunça.</p>
+    </div>
+    <button class="btn btn-primary" onclick="toggleWorkoutBuilderPanel(true)"><i class='bx bx-list-plus'></i>Nova ficha</button>
+  </div>
+
+  <section class="workout-hero card">
+    <div class="workout-hero-copy">
+      <div class="hero-icon-bubble"><i class='bx bx-dumbbell'></i></div>
+      <div>
+        <span class="hero-kicker">Treino de hoje</span>
+        <h2 id="workoutHeroTitle">Monte sua primeira ficha</h2>
+        <p id="workoutHeroSubtitle">Crie um treino A/B/C para aparecer aqui como treino principal.</p>
+      </div>
+    </div>
+    <div class="workout-hero-stats">
+      <div><strong id="workoutStatTemplates">0</strong><span>fichas</span></div>
+      <div><strong id="workoutStatToday">0</strong><span>feitos hoje</span></div>
+      <div><strong id="workoutStatMinutes">0 min</strong><span>estimativa</span></div>
+    </div>
+    <div class="workout-hero-actions">
+      <button class="btn btn-primary" id="startMainWorkoutBtn" onclick="startSuggestedWorkout()"><i class='bx bx-play'></i>Iniciar treino</button>
+      <button class="btn btn-outline" onclick="toggleWorkoutBuilderPanel(true)"><i class='bx bx-plus'></i>Criar ficha</button>
+    </div>
+  </section>
+
+  <div class="card workout-builder-card compact-workout-builder builder-collapsed" id="workoutBuilderCard">
+    <div class="template-headline">
+      <div>
+        <div class="card-title" style="margin-bottom:.25rem"><i class='bx bx-list-plus'></i>Montar ficha de treino</div>
+        <p class="saved-meals-sub" style="margin:0">Escolha uma categoria, marque os exercícios e salve como Treino A/B/C.</p>
+      </div>
+      <div class="builder-head-actions">
+        <button class="btn btn-ghost btn-sm" onclick="toggleWorkoutBuilderPanel(false)"><i class='bx bx-x'></i>Fechar</button>
+        <button class="btn btn-primary btn-sm" onclick="saveWorkoutTemplate()"><i class='bx bx-save'></i>Salvar ficha</button>
+      </div>
+    </div>
+
+    <div class="workout-builder">
+      <input class="field-input" id="workoutName" placeholder="Nome da ficha. Ex: Treino A - Peito e tríceps">
+
+      <div class="builder-control-row">
+        <div class="ex-search-wrap builder-search">
+          <i class='bx bx-search'></i>
+          <input type="text" class="field-input ex-search" id="workoutBuilderSearch" placeholder="Buscar para adicionar na ficha..." oninput="renderWorkoutBuilder()">
+        </div>
+        <div class="selected-counter" id="workoutSelectedCount">0 selecionados</div>
+      </div>
+
+      <div class="chip-group builder-cat-chips" id="workoutCatFilters"></div>
+      <div class="workout-selected-preview" id="workoutSelectedPreview"></div>
+      <div class="workout-pick-list compact" id="workoutPickList"></div>
+    </div>
+  </div>
+
+  <section class="saved-workouts-panel card">
+    <div class="template-headline">
+      <div>
+        <div class="card-title" style="margin-bottom:.25rem"><i class='bx bx-bookmark-heart'></i>Fichas salvas</div>
+        <p class="saved-meals-sub" style="margin:0">Cards de treino prontos para iniciar e marcar como concluídos.</p>
+      </div>
+    </div>
+    <div id="workoutTemplatesGrid" class="workout-template-grid"></div>
+  </section>
+
+  <div class="catalog-heading">
+    <div>
+      <h2>Catálogo de exercícios</h2>
+      <p>Separado por categoria para achar tudo sem virar feira de checkbox.</p>
+    </div>
+  </div>
+
+  <div class="ex-toolbar modern-ex-toolbar">
+    <div class="chip-group" id="exFilters"></div>
+    <div class="ex-search-wrap">
+      <i class='bx bx-search'></i>
+      <input type="text" class="field-input ex-search" id="exSearch" placeholder="Buscar exercício..." oninput="renderExercises()">
+    </div>
+  </div>
+  <div class="ex-grid" id="exGrid"></div>
+</main>

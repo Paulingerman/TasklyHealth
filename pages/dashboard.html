@@ -1,0 +1,100 @@
+<main class="page active" id="page-dashboard">
+      <div class="dash-header">
+        <div>
+          <div class="dash-greeting" id="dashGreet">Bom dia</div>
+          <div class="dash-date"     id="dashDate"></div>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi" style="--kc:var(--accent);--kb:var(--accent-d)">
+          <div class="kpi-icon"><i class='bx bx-check-double'></i></div>
+          <div class="kpi-val"   id="kpiDay">0%</div>
+          <div class="kpi-label">Progresso do dia</div>
+        </div>
+        <div class="kpi" style="--kc:var(--blue);--kb:var(--blue-d)">
+          <div class="kpi-icon"><i class='bx bx-droplet'></i></div>
+          <div class="kpi-val"   id="kpiWater">0L</div>
+          <div class="kpi-label">Agua ingerida</div>
+        </div>
+        <div class="kpi" style="--kc:var(--amber);--kb:var(--amber-d)">
+          <div class="kpi-icon"><i class='bx bx-flame'></i></div>
+          <div class="kpi-val"   id="kpiStreak">0</div>
+          <div class="kpi-label">Dias consecutivos</div>
+        </div>
+        <div class="kpi" style="--kc:var(--purple);--kb:var(--purple-d)">
+          <div class="kpi-icon"><i class='bx bx-food-tag'></i></div>
+          <div class="kpi-val"   id="kpiCal">0</div>
+          <div class="kpi-label">kcal registradas</div>
+        </div>
+      </div>
+
+      <!-- Grid principal -->
+      <div class="dash-grid">
+        <div class="dash-col">
+          <!-- Checklist da rotina -->
+          <div class="check-card">
+            <div class="check-ring-wrap">
+              <div class="ring-wrap" style="width:130px;height:130px">
+                <svg width="130" height="130" viewBox="0 0 130 130">
+                  <circle class="ring-bg"   cx="65" cy="65" r="53"/>
+                  <circle class="ring-fill" id="dashRing" cx="65" cy="65" r="53"
+                    stroke="var(--accent)" stroke-dasharray="333" stroke-dashoffset="333"/>
+                </svg>
+                <div class="ring-center">
+                  <span class="ring-pct" id="dashRingPct">0%</span>
+                  <span class="ring-sub" id="dashRingSub">0 / 0 tarefas</span>
+                </div>
+              </div>
+              <span class="check-ring-label">Progresso geral</span>
+            </div>
+            <div class="check-right">
+              <div class="check-right-title"><i class='bx bx-list-check'></i>Rotina de hoje</div>
+              <div class="task-list" id="taskList">
+                <div class="empty" style="border:none;padding:1rem">
+                  <div class="empty-icon"><i class='bx bx-calendar'></i></div>
+                  <p class="empty-desc">Configure sua rotina para comecar</p>
+                  <button class="btn btn-primary btn-sm" style="margin-top:.75rem" onclick="go('routine')">
+                    Configurar rotina
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="dashMotiv" style="display:none"></div>
+        </div>
+
+        <div class="dash-col">
+          <!-- Resumo rápido -->
+          <div class="card">
+            <div class="card-title"><i class='bx bx-stats'></i>Resumo rapido</div>
+            <div class="stat-grid">
+              <div class="stat-mini"><div class="stat-mini-val" id="sMeals">—</div><div class="stat-mini-label">Refeicoes</div></div>
+              <div class="stat-mini"><div class="stat-mini-val" id="sExercise">—</div><div class="stat-mini-label">Treino</div></div>
+              <div class="stat-mini"><div class="stat-mini-val" id="sSleep">—</div><div class="stat-mini-label">Sono</div></div>
+              <div class="stat-mini"><div class="stat-mini-val" id="sWeekAvg">0%</div><div class="stat-mini-label">Media 7 dias</div></div>
+            </div>
+          </div>
+
+          <!-- Mini gráfico semanal -->
+          <div class="card">
+            <div class="card-title"><i class='bx bx-bar-chart-alt-2'></i>Ultimos 7 dias</div>
+            <div class="week-chart" id="dashWeekChart" style="height:60px;margin-bottom:.5rem"></div>
+            <div style="display:flex;justify-content:space-between">
+              <span style="font-size:.675rem;color:var(--text-3)">7 dias atras</span>
+              <span style="font-size:.675rem;color:var(--accent);font-weight:700">Hoje</span>
+            </div>
+          </div>
+
+          <!-- Dica do dia -->
+          <div class="tip-card">
+            <div class="tip-icon"><i class='bx bx-bulb'></i></div>
+            <div>
+              <div class="tip-eyebrow">Dica do dia</div>
+              <div class="tip-text" id="dashTip"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>

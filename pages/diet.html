@@ -1,0 +1,123 @@
+<main class="page active" id="page-diet">
+  <div class="page-eyebrow">Nutrição local</div>
+  <div class="modern-page-head">
+    <div>
+      <h1 class="page-title">Alimentação</h1>
+      <p class="page-sub">Registre refeições, acompanhe macros e reutilize fichas em poucos cliques.</p>
+    </div>
+    <div class="diet-date-actions head-date-actions">
+      <button class="btn btn-ghost btn-sm" onclick="moveDietDate(-1)"><i class='bx bx-chevron-left'></i>Dia anterior</button>
+      <input type="date" class="field-input" id="dietDatePicker" onchange="setDietDate(this.value)">
+      <button class="btn btn-outline btn-sm" onclick="setDietDate(todayKey())">Hoje</button>
+    </div>
+  </div>
+
+  <section class="diet-hero card">
+    <div class="diet-hero-main">
+      <div class="hero-icon-bubble"><i class='bx bxs-bowl-rice'></i></div>
+      <div>
+        <span class="hero-kicker" id="dietHeroDate">Hoje</span>
+        <h2 id="dietHeroTitle">Resumo alimentar</h2>
+        <p id="dietHeroSubtitle">Nenhum alimento registrado ainda.</p>
+      </div>
+    </div>
+
+    <div class="diet-calorie-meter">
+      <div class="calorie-ring-lite">
+        <span id="macCal">0</span>
+        <small>kcal</small>
+      </div>
+      <div class="calorie-meter-copy">
+        <div class="meter-row"><span>Meta estimada</span><strong id="dietTargetLabel">2.000 kcal</strong></div>
+        <div class="pbar diet-target-bar"><div class="pbar-fill" id="dietTargetFill"></div></div>
+        <small id="dietTargetHint">0% da meta diária</small>
+      </div>
+    </div>
+  </section>
+
+  <div class="macro-bar modern-macro-bar">
+    <div class="macro-card mc-green">
+      <div class="macro-top"><span>Proteína</span><strong id="macProt">0g</strong></div>
+      <div class="pbar"><div class="pbar-fill" id="protFill"></div></div>
+    </div>
+    <div class="macro-card mc-blue">
+      <div class="macro-top"><span>Carboidrato</span><strong id="macCarb">0g</strong></div>
+      <div class="pbar"><div class="pbar-fill" id="carbFill"></div></div>
+    </div>
+    <div class="macro-card mc-purple">
+      <div class="macro-top"><span>Gordura</span><strong id="macFat">0g</strong></div>
+      <div class="pbar"><div class="pbar-fill" id="fatFill"></div></div>
+    </div>
+  </div>
+
+  <section class="quick-food-card card">
+    <div class="template-headline">
+      <div>
+        <div class="card-title" style="margin-bottom:.25rem"><i class='bx bx-plus-medical'></i>Ações rápidas</div>
+        <p class="saved-meals-sub" style="margin:0">Escolha a refeição e adicione alimentos sem atravessar um labirinto de formulário.</p>
+      </div>
+      <select class="field-input" id="mealPicker">
+        <option value="breakfast">Café da manhã</option>
+        <option value="lunch">Almoço</option>
+        <option value="snack">Lanche</option>
+        <option value="dinner">Jantar</option>
+      </select>
+    </div>
+
+    <div class="quick-food-layout">
+      <div class="food-search-wrap">
+        <div class="field-icon-wrap">
+          <i class='bx bx-search fi-icon'></i>
+          <input type="text" class="field-input" id="foodSearch" placeholder="Buscar alimento para adicionar..." oninput="searchFood(this.value)">
+        </div>
+        <div id="foodDropdown" class="food-dropdown"></div>
+      </div>
+      <button class="btn btn-outline" onclick="toggleCustomFoodPanel()"><i class='bx bx-plus-circle'></i>Criar alimento</button>
+    </div>
+
+    <div class="meal-shortcuts" id="mealShortcutBar"></div>
+
+    <div class="custom-food-panel" id="customFoodPanel">
+      <div class="custom-food-form modern-custom-food-form">
+        <input class="field-input" id="cfName" placeholder="Nome do alimento">
+        <input class="field-input" id="cfCal" type="number" min="0" placeholder="kcal">
+        <input class="field-input" id="cfProt" type="number" min="0" step="0.1" placeholder="Prot g">
+        <input class="field-input" id="cfCarb" type="number" min="0" step="0.1" placeholder="Carb g">
+        <input class="field-input" id="cfFat" type="number" min="0" step="0.1" placeholder="Gord g">
+        <button class="btn btn-primary" onclick="saveCustomFood()"><i class='bx bx-save'></i>Salvar</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="diet-dashboard-grid">
+    <div class="card saved-meals-card">
+      <div class="template-headline">
+        <div>
+          <div class="card-title" style="margin-bottom:.25rem"><i class='bx bx-bookmark-heart'></i>Fichas alimentares</div>
+          <p class="saved-meals-sub" style="margin:0">Reutilize refeições prontas como base.</p>
+        </div>
+        <select class="field-input" id="templateMealFilter" onchange="renderMealTemplates()">
+          <option value="all">Todas</option>
+          <option value="breakfast">Café da manhã</option>
+          <option value="lunch">Almoço</option>
+          <option value="snack">Lanche</option>
+          <option value="dinner">Jantar</option>
+        </select>
+      </div>
+      <div id="mealTemplatesGrid" class="meal-template-grid compact-template-grid"></div>
+    </div>
+
+    <div class="card recent-history-card">
+      <div class="card-title"><i class='bx bx-history'></i>Histórico recente</div>
+      <div id="dietHistoryList" class="diet-history-list modern-history-list"></div>
+    </div>
+  </div>
+
+  <section class="meals-section-head">
+    <div>
+      <h2>Refeições do dia</h2>
+      <p>Abra cada card para editar ou salvar como ficha.</p>
+    </div>
+  </section>
+  <div id="mealsContainer" class="modern-meals-container"></div>
+</main>

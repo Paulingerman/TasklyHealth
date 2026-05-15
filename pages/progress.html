@@ -1,0 +1,101 @@
+<main class="page active" id="page-progress">
+  <div class="progress-page-head">
+    <div>
+      <div class="page-eyebrow">Painel visual</div>
+      <h1 class="page-title">Progresso</h1>
+      <p class="page-sub">Acompanhe sua rotina com uma visão mais limpa, visual e parecida com dashboard de aplicativo.</p>
+    </div>
+    <div class="progress-head-pill">
+      <i class='bx bx-calendar-star'></i>
+      <span id="progressTodayLabel">Hoje</span>
+    </div>
+  </div>
+
+  <section class="progress-showcase">
+    <article class="progress-profile-card">
+      <div class="profile-glow"></div>
+      <div class="progress-avatar-wrap">
+        <div class="progress-avatar" id="progressAvatar">P</div>
+        <button class="progress-avatar-plus" type="button" aria-label="Perfil"><i class='bx bx-plus'></i></button>
+      </div>
+      <h2 id="progressUserName">Meu Progresso</h2>
+      <p id="progressUserGoal">Saúde geral</p>
+
+      <div class="profile-score-row">
+        <div>
+          <strong id="progressMainScore">0</strong>
+          <span>Score semanal</span>
+        </div>
+        <div>
+          <strong id="progressStreakCard">0</strong>
+          <span>Dias fortes</span>
+        </div>
+      </div>
+
+      <div class="profile-meters" id="progressProfileMeters"></div>
+    </article>
+
+    <article class="progress-radar-card">
+      <div class="progress-card-top">
+        <div>
+          <span class="section-kicker">Performance</span>
+          <h3>Semana atual</h3>
+        </div>
+        <select id="progressMetricMode" class="progress-select" aria-label="Modo de progresso">
+          <option value="week">Últimos 7 dias</option>
+          <option value="today">Hoje</option>
+        </select>
+      </div>
+
+      <div class="radar-wrap">
+        <div class="radar-score-badge">
+          <strong id="radarScoreText">0%</strong>
+          <span>geral</span>
+        </div>
+        <svg class="radar-chart" viewBox="0 0 260 260" role="img" aria-label="Radar de progresso semanal">
+          <polygon class="radar-grid" points="130,28 227,98 190,211 70,211 33,98"></polygon>
+          <polygon class="radar-grid radar-grid-soft" points="130,58 198,107 172,186 88,186 62,107"></polygon>
+          <polygon class="radar-grid radar-grid-soft" points="130,88 169,116 154,161 106,161 91,116"></polygon>
+          <line class="radar-axis" x1="130" y1="130" x2="130" y2="28"></line>
+          <line class="radar-axis" x1="130" y1="130" x2="227" y2="98"></line>
+          <line class="radar-axis" x1="130" y1="130" x2="190" y2="211"></line>
+          <line class="radar-axis" x1="130" y1="130" x2="70" y2="211"></line>
+          <line class="radar-axis" x1="130" y1="130" x2="33" y2="98"></line>
+          <polygon class="radar-fill" id="radarShape" points="130,130 130,130 130,130 130,130 130,130"></polygon>
+          <circle class="radar-dot" id="radarDot0" cx="130" cy="130" r="4"></circle>
+          <circle class="radar-dot" id="radarDot1" cx="130" cy="130" r="4"></circle>
+          <circle class="radar-dot" id="radarDot2" cx="130" cy="130" r="4"></circle>
+          <circle class="radar-dot" id="radarDot3" cx="130" cy="130" r="4"></circle>
+          <circle class="radar-dot" id="radarDot4" cx="130" cy="130" r="4"></circle>
+        </svg>
+      </div>
+
+      <div class="radar-labels" id="radarLabels"></div>
+    </article>
+  </section>
+
+  <section class="progress-stats-strip" id="progressStatsStrip"></section>
+
+  <section class="progress-content-grid">
+    <article class="card progress-week-card">
+      <div class="card-title"><i class='bx bx-bar-chart-alt-2'></i>Últimos 7 dias</div>
+      <div class="progress-weekline" id="progressWeekline"></div>
+    </article>
+
+    <article class="card progress-goals-card">
+      <div class="card-title"><i class='bx bx-target-lock'></i>Missões da semana</div>
+      <div class="progress-goals-list" id="progressGoalsList"></div>
+    </article>
+  </section>
+
+  <section class="progress-detail-section">
+    <div class="progress-section-title">
+      <div>
+        <span class="section-kicker">Diário</span>
+        <h3>Detalhes por dia</h3>
+      </div>
+      <span class="progress-muted">água, calorias, proteína e treino</span>
+    </div>
+    <div class="progress-day-grid" id="detailList"></div>
+  </section>
+</main>

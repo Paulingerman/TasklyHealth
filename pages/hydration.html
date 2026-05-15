@@ -1,0 +1,58 @@
+<main class="page active" id="page-hydration">
+      <div class="page-eyebrow">Monitoramento</div>
+      <h1 class="page-title">Hidratacao</h1>
+      <p class="page-sub">Controle sua ingestao de agua diaria</p>
+
+      <div class="hyd-layout">
+        <!-- Gauge -->
+        <div>
+          <div class="hyd-gauge-card">
+            <div class="hyd-ring-wrap">
+              <svg width="190" height="190" viewBox="0 0 190 190">
+                <circle class="ring-bg" cx="95" cy="95" r="78" stroke-width="10"/>
+                <circle id="hydRing" fill="none" cx="95" cy="95" r="78"
+                  stroke="var(--blue)" stroke-width="10" stroke-linecap="round"
+                  stroke-dasharray="490" stroke-dashoffset="490"
+                  style="transform:rotate(-90deg);transform-origin:95px 95px;transition:stroke-dashoffset .7s cubic-bezier(.4,0,.2,1)"/>
+              </svg>
+              <div class="hyd-ring-val">
+                <span class="hyd-liters"    id="hydLiters">0.0L</span>
+                <span class="hyd-goal-text" id="hydGoalTxt">/ 2.0L</span>
+                <span class="hyd-pct"       id="hydPct" style="color:var(--blue)">0%</span>
+              </div>
+            </div>
+            <span class="hyd-glasses" id="hydGlasses">0 copos de 250ml</span>
+            <div class="hyd-success" id="hydSuccess" style="display:none">
+              <i class='bx bx-check-circle'></i>Meta diaria atingida!
+            </div>
+          </div>
+          <button class="btn btn-outline btn-full btn-sm" style="margin-top:.875rem" onclick="resetWater()">
+            <i class='bx bx-reset'></i>Zerar contagem do dia
+          </button>
+        </div>
+
+        <!-- Registro e histórico -->
+        <div style="display:flex;flex-direction:column;gap:1.25rem">
+          <div class="card">
+            <div class="card-title"><i class='bx bx-plus-circle'></i>Registrar ingestao</div>
+            <div class="quick-grid" id="quickBtns">
+              <button class="quick-btn" onclick="addWater(.15,'150ml')"><i class='bx bx-water'></i><span class="quick-btn-label">150ml</span></button>
+              <button class="quick-btn" onclick="addWater(.2,'200ml')"><i class='bx bx-water'></i><span class="quick-btn-label">200ml</span></button>
+              <button class="quick-btn" onclick="addWater(.35,'350ml')"><i class='bx bx-droplet'></i><span class="quick-btn-label">350ml</span></button>
+              <button class="quick-btn" onclick="addWater(.5,'500ml')"><i class='bx bx-droplet'></i><span class="quick-btn-label">500ml</span></button>
+              <button class="quick-btn" onclick="addWater(.6,'600ml')"><i class='bx bx-droplet-half'></i><span class="quick-btn-label">600ml</span></button>
+              <button class="quick-btn" onclick="addWater(1,'1.0L')"><i class='bx bx-droplet-half'></i><span class="quick-btn-label">1.0L</span></button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title"><i class='bx bx-history'></i>Historico de hoje</div>
+            <div id="hydHistory">
+              <div class="empty" style="padding:1.5rem;border:none">
+                <div class="empty-icon"><i class='bx bx-droplet'></i></div>
+                <p class="empty-desc">Nenhum registro ainda</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
