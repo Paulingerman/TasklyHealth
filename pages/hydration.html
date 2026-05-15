@@ -1,7 +1,7 @@
 <main class="page active" id="page-hydration">
       <div class="page-eyebrow">Monitoramento</div>
-      <h1 class="page-title">Hidratacao</h1>
-      <p class="page-sub">Controle sua ingestao de agua diaria</p>
+      <h1 class="page-title">Hidratação</h1>
+      <p class="page-sub">Controle sua ingestao de água diária</p>
 
       <div class="hyd-layout">
         <!-- Gauge -->
@@ -22,8 +22,9 @@
               </div>
             </div>
             <span class="hyd-glasses" id="hydGlasses">0 copos de 250ml</span>
+            <span class="hyd-remaining" id="hydRemaining">Faltam 2.0L para a meta</span>
             <div class="hyd-success" id="hydSuccess" style="display:none">
-              <i class='bx bx-check-circle'></i>Meta diaria atingida!
+              <i class='bx bx-check-circle'></i>Meta diária atingida!
             </div>
           </div>
           <button class="btn btn-outline btn-full btn-sm" style="margin-top:.875rem" onclick="resetWater()">
@@ -34,7 +35,7 @@
         <!-- Registro e histórico -->
         <div style="display:flex;flex-direction:column;gap:1.25rem">
           <div class="card">
-            <div class="card-title"><i class='bx bx-plus-circle'></i>Registrar ingestao</div>
+            <div class="card-title"><i class='bx bx-plus-circle'></i>Registrar ingestão</div>
             <div class="quick-grid" id="quickBtns">
               <button class="quick-btn" onclick="addWater(.15,'150ml')"><i class='bx bx-water'></i><span class="quick-btn-label">150ml</span></button>
               <button class="quick-btn" onclick="addWater(.2,'200ml')"><i class='bx bx-water'></i><span class="quick-btn-label">200ml</span></button>
@@ -43,15 +44,42 @@
               <button class="quick-btn" onclick="addWater(.6,'600ml')"><i class='bx bx-droplet-half'></i><span class="quick-btn-label">600ml</span></button>
               <button class="quick-btn" onclick="addWater(1,'1.0L')"><i class='bx bx-droplet-half'></i><span class="quick-btn-label">1.0L</span></button>
             </div>
+
+            <div class="hyd-custom-box">
+              <div>
+                <label class="field-label" for="customWaterMl">Quantidade personalizada</label>
+                <p class="input-hint">Digite somente números. Exemplo: 300 para 300ml.</p>
+              </div>
+              <div class="hyd-custom-row">
+                <input class="field-input no-spinner" id="customWaterMl" type="text" inputmode="numeric" data-only="integer" data-min="50" data-max="3000" placeholder="Ex: 300ml">
+                <button class="btn btn-primary" onclick="addCustomWater()"><i class='bx bx-plus'></i>Adicionar</button>
+              </div>
+            </div>
+
+            <div class="hyd-goal-box">
+              <div>
+                <label class="field-label" for="hydGoalInput">Meta diária</label>
+                <p class="input-hint">A meta alimenta o dashboard e a tela de progresso.</p>
+              </div>
+              <div class="hyd-custom-row">
+                <input class="field-input no-spinner" id="hydGoalInput" type="text" inputmode="decimal" data-only="decimal" data-min="0.5" data-max="6" placeholder="Ex: 2.5L">
+                <button class="btn btn-outline" onclick="saveWaterGoalFromHydration()"><i class='bx bx-save'></i>Salvar meta</button>
+              </div>
+            </div>
           </div>
           <div class="card">
-            <div class="card-title"><i class='bx bx-history'></i>Historico de hoje</div>
+            <div class="card-title"><i class='bx bx-history'></i>Histórico de hoje</div>
             <div id="hydHistory">
               <div class="empty" style="padding:1.5rem;border:none">
                 <div class="empty-icon"><i class='bx bx-droplet'></i></div>
                 <p class="empty-desc">Nenhum registro ainda</p>
               </div>
             </div>
+          </div>
+
+          <div class="card hyd-tip-card">
+            <div class="card-title"><i class='bx bx-bulb'></i>Dica rápida</div>
+            <p id="hydTip">Registre água ao longo do dia para manter o progresso mais equilibrado.</p>
           </div>
         </div>
       </div>

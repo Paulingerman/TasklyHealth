@@ -2,35 +2,56 @@
    hydration.js — Controle de hidratação diária
 ═══════════════════════════════════════════════════════════════ */
 
+function formatLiters(value) {
+  return `${Number(value || 0).toFixed(1)}L`;
+}
+
+function getTodayWaterEntries() {
+  const today = todayKey();
+  return (S.waterLog || []).filter(e => e.date === today);
+}
+
 function renderHydration() {
   const today = todayKey();
   const log   = S.healthLog[today] || {};
-  const goal  = S.routine.waterGoal || 2;
-  const cur   = log.water || 0;
-  const pct   = Math.min(100, Math.round((cur / goal) * 100));
+  const goal  = Number(S.routine.waterGoal || 2);
+  const cur   = Number(log.water || 0);
+  const pct   = goal > 0 ? Math.min(100, Math.round((cur / goal) * 100)) : 0;
   const done  = cur >= goal;
+  const remaining = Math.max(0, goal - cur);
 
-  /* Valores numéricos */
-  document.getElementById('hydLiters').textContent   = `${cur.toFixed(1)}L`;
-  document.getElementById('hydGoalTxt').textContent  = `/ ${goal.toFixed(1)}L`;
+  document.getElementById('hydLiters').textContent   = formatLiters(cur);
+  document.getElementById('hydGoalTxt').textContent  = `/ ${formatLiters(goal)}`;
   document.getElementById('hydPct').textContent      = `${pct}%`;
   document.getElementById('hydPct').style.color      = done ? 'var(--accent)' : 'var(--blue)';
   document.getElementById('hydGlasses').textContent  = `${Math.round(cur / 0.25)} copos de 250ml`;
 
-  /* Anel (r=78 → circ≈490) */
+  const remainingEl = document.getElementById('hydRemaining');
+  if (remainingEl) {
+    remainingEl.textContent = done ? 'Meta diária concluída.' : `Faltam ${formatLiters(remaining)} para a meta`;
+  }
+
+  const goalInput = document.getElementById('hydGoalInput');
+  if (goalInput && document.activeElement !== goalInput) goalInput.value = String(goal).replace('.', ',');
+
   const ring = document.getElementById('hydRing');
   ring.style.strokeDashoffset = 490 * (1 - (pct / 100));
-  ring.style.stroke           = done ? 'var(--accent)' : 'var(--blue)';
+  ring.style.stroke = done ? 'var(--accent)' : 'var(--blue)';
 
-  /* Banner de meta atingida */
   document.getElementById('hydSuccess').style.display = done ? 'flex' : 'none';
-
-  /* Desabilita botões quando meta atingida */
   document.querySelectorAll('.quick-btn').forEach(b => b.disabled = done);
 
-  /* Histórico do dia */
+  const tip = document.getElementById('hydTip');
+  if (tip) {
+    tip.textContent = done
+      ? 'Meta batida. Agora mantenha o ritmo sem exagerar de uma vez.'
+      : pct >= 70
+        ? 'Você está perto da meta. Pequenos registros completam o dia sem pressão.'
+        : 'Tente registrar água em pequenos intervalos para criar consistência.';
+  }
+
   const his     = document.getElementById('hydHistory');
-  const entries = (S.waterLog || []).filter(e => e.date === today);
+  const entries = getTodayWaterEntries();
 
   if (!entries.length) {
     his.innerHTML = `
@@ -50,30 +71,59 @@ function renderHydration() {
   }
 }
 
-/* ── Adiciona água ────────────────────────────────────────────── */
 async function addWater(liters, label) {
   const today = todayKey();
   if (!S.healthLog[today]) S.healthLog[today] = {};
 
-  const goal = S.routine.waterGoal || 2;
-  const cur  = S.healthLog[today].water || 0;
-  if (cur >= goal) return;
+  const goal = Number(S.routine.waterGoal || 2);
+  const cur  = Number(S.healthLog[today].water || 0);
+  if (cur >= goal) {
+    toast('Meta diária já foi atingida.', 'info');
+    return;
+  }
 
-  S.healthLog[today].water = Math.min(goal, parseFloat((cur + liters).toFixed(2)));
+  const next = Math.min(goal, Number((cur + liters).toFixed(2)));
+  S.healthLog[today].water = next;
 
   if (!S.waterLog) S.waterLog = [];
   S.waterLog.push({
     date: today,
     time: new Date().toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit' }),
-    ml:   Math.round(liters * 1000),
+    ml: Math.round((next - cur) * 1000),
   });
+
   await persist('water_log', S.waterLog);
   await persist('health_log', S.healthLog);
   renderHydration();
   toast(`${label} registrado.`);
 }
 
-/* ── Zera contagem do dia ────────────────────────────────────── */
+async function addCustomWater() {
+  const input = document.getElementById('customWaterMl');
+  const ml = readDecimal('customWaterMl', { min:50, max:3000, label:'quantidade de água' });
+  if (ml === false) return;
+  if (!ml) {
+    toast('Digite a quantidade em ml.', 'error');
+    input?.focus();
+    return;
+  }
+  input.value = '';
+  await addWater(ml / 1000, `${ml}ml`);
+}
+
+async function saveWaterGoalFromHydration() {
+  const value = readDecimal('hydGoalInput', { min:0.5, max:6, label:'meta diária de água' });
+  if (value === false) return;
+  if (!value) {
+    toast('Digite a meta em litros.', 'error');
+    return;
+  }
+  S.routine = { ...S.routine, waterGoal: Number(value.toFixed(1)) };
+  await persist('routine', S.routine);
+  renderHydration();
+  toast('Meta de hidratação atualizada.', 'success');
+}
+
 async function resetWater() {
   const today = todayKey();
   if (!S.healthLog[today]) S.healthLog[today] = {};
