@@ -27,19 +27,24 @@ async function doLogin() {
     return;
   }
   bootApp();
-  toast(`Perfil carregado: ${S.user.name?.split(' ')[0] || 'usuario'}.`, 'success');
+  toast(`Perfil carregado: ${S.user.name?.split(' ')[0] || 'usuário'}.`, 'success');
 }
 
 async function doRegister() {
   const name = document.getElementById('regName').value.trim();
   const email = document.getElementById('regEmail')?.value.trim() || '';
-  const weight = parseFloat(document.getElementById('regWeight').value) || null;
-  const height = parseFloat(document.getElementById('regHeight').value) || null;
+  const weight = readDecimal('regWeight', { min:30, max:300, label:'peso' });
+  const height = readDecimal('regHeight', { min:100, max:250, label:'altura' });
 
   if (!name) {
     toast('Digite pelo menos seu nome.', 'error');
     return;
   }
+  if (!/^[A-Za-zÀ-ÿ ]{3,}$/.test(name)) {
+    toast('Digite um nome válido, usando apenas letras.', 'error');
+    return;
+  }
+  if (weight === false || height === false) return;
 
   S.user = {
     id: 'local-user',

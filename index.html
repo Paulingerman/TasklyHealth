@@ -23,7 +23,7 @@
 <div id="toast-root"></div>
 
 <!-- ════════════════════════════════════════════════════════════
-     PERFIL LOCAL — Entrada e configuracao
+     PERFIL LOCAL — Entrada e configuração
 ════════════════════════════════════════════════════════════ -->
 <div id="auth-root">
 
@@ -35,12 +35,12 @@
         <div class="auth-brand-glow"></div>
         <div class="auth-brand-inner">
           <div class="auth-logo"><i class='bx bx-heart-circle'></i></div>
-          <h1 class="auth-headline">Saude que<br><span>evolui com voce</span></h1>
-          <p class="auth-desc">Monitore sua rotina de saude, hidratacao, treinos e alimentacao em uma plataforma integrada e profissional.</p>
+          <h1 class="auth-headline">Saúde que<br><span>evolui com você</span></h1>
+          <p class="auth-desc">Monitore sua rotina de saúde, hidratação, treinos e alimentação em uma plataforma integrada e profissional.</p>
           <div class="auth-feat">
-            <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Rotina diaria personalizada</div>
-            <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Monitoramento de hidratacao</div>
-            <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Catalogo de exercicios com timer</div>
+            <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Rotina diária personalizada</div>
+            <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Monitoramento de hidratação</div>
+            <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Catálogo de exercícios com timer</div>
             <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Registro alimentar com macros</div>
             <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Progresso semanal visual</div>
           </div>
@@ -48,19 +48,19 @@
       </div>
       <div class="auth-form-side">
         <h2 class="auth-form-title">Entrar no perfil local</h2>
-        <p class="auth-form-sub">Se voce ja criou um perfil neste navegador, continue daqui.</p>
+        <p class="auth-form-sub">Se você já criou um perfil neste navegador, continue daqui.</p>
         <div class="local-login-box">
           <i class='bx bx-hard-drive'></i>
           <div>
             <strong>Modo local ativado</strong>
-            <span>Nao usa banco de dados. Tudo fica salvo no navegador.</span>
+            <span>Não usa banco de dados. Tudo fica salvo no navegador.</span>
           </div>
         </div>
         <button class="btn btn-primary btn-full" id="loginBtn" onclick="doLogin()" style="margin-top:.25rem">
           Entrar no perfil salvo
         </button>
         <p class="auth-footer-text">
-          Ainda nao criou? <a href="#" onclick="showAuthPage('register');return false">Criar perfil local</a>
+          Ainda não criou? <a href="#" onclick="showAuthPage('register');return false">Criar perfil local</a>
         </p>
       </div>
     </div>
@@ -79,21 +79,21 @@
           <div class="auth-feat">
             <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Salvamento local</div>
             <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Dashboard inteligente</div>
-            <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Exportacao e importacao</div>
+            <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Exportação e importação</div>
             <div class="auth-feat-item"><i class='bx bx-check-circle'></i>Calculadora de IMC integrada</div>
           </div>
         </div>
       </div>
       <div class="auth-form-side" style="overflow-y:auto">
         <h2 class="auth-form-title">Criar perfil local</h2>
-        <p class="auth-form-sub">Preencha seus dados iniciais. Senha nao e necessaria.</p>
+        <p class="auth-form-sub">Preencha seus dados iniciais. Senha não é necessária.</p>
         <div class="field field-icon-wrap">
           <i class='bx bx-user fi-icon'></i>
-          <input type="text" class="field-input" id="regName" placeholder="Nome completo">
+          <input type="text" class="field-input" id="regName" placeholder="Nome completo" autocomplete="name" data-only="letters">
         </div>
         <div class="field field-icon-wrap">
           <i class='bx bx-envelope fi-icon'></i>
-          <input type="email" class="field-input" id="regEmail" placeholder="seu@email.com">
+          <input type="email" class="field-input" id="regEmail" placeholder="seu@email.com" autocomplete="email">
         </div>
         <div class="local-login-box compact">
           <i class='bx bx-shield-quarter'></i>
@@ -103,19 +103,19 @@
           </div>
         </div>
         <div class="field-row" style="margin-bottom:.875rem">
-          <input type="number" class="field-input" id="regWeight" placeholder="Peso (kg)" min="30" max="300">
-          <input type="number" class="field-input" id="regHeight" placeholder="Altura (cm)" min="100" max="250">
+          <input type="text" class="field-input no-spinner" id="regWeight" placeholder="Peso (kg)" inputmode="decimal" data-only="decimal" data-min="30" data-max="300">
+          <input type="text" class="field-input no-spinner" id="regHeight" placeholder="Altura (cm)" inputmode="numeric" data-only="integer" data-min="100" data-max="250">
         </div>
         <label class="field-label">Objetivo principal</label>
         <div class="goal-grid" id="regGoalGrid">
           <button class="goal-opt active" data-g="perda_peso"  onclick="pickGoal(this,'regGoalGrid')"><div class="goal-opt-icon"><i class='bx bx-trending-down'></i></div><span class="goal-opt-label">Perder Peso</span></button>
           <button class="goal-opt"        data-g="manutencao"  onclick="pickGoal(this,'regGoalGrid')"><div class="goal-opt-icon"><i class='bx bx-slider-alt'></i></div><span class="goal-opt-label">Manter Peso</span></button>
           <button class="goal-opt"        data-g="ganho_massa" onclick="pickGoal(this,'regGoalGrid')"><div class="goal-opt-icon"><i class='bx bx-trending-up'></i></div><span class="goal-opt-label">Ganhar Massa</span></button>
-          <button class="goal-opt"        data-g="saude_geral" onclick="pickGoal(this,'regGoalGrid')"><div class="goal-opt-icon"><i class='bxs-leaf bx'></i></div><span class="goal-opt-label">Saude Geral</span></button>
+          <button class="goal-opt"        data-g="saude_geral" onclick="pickGoal(this,'regGoalGrid')"><div class="goal-opt-icon"><i class='bxs-leaf bx'></i></div><span class="goal-opt-label">Saúde Geral</span></button>
         </div>
         <button class="btn btn-primary btn-full" id="registerBtn" onclick="doRegister()">Criar perfil local</button>
         <p class="auth-footer-text">
-          Ja tem perfil salvo? <a href="#" onclick="showAuthPage('login');return false">Entrar</a>
+          Já tem perfil salvo? <a href="#" onclick="showAuthPage('login');return false">Entrar</a>
         </p>
       </div>
     </div>
@@ -139,9 +139,9 @@
     <nav class="sb-nav">
       <div class="sb-section">Principal</div>
       <a class="sb-link active" data-p="dashboard" onclick="go('dashboard')"><i class='bx bx-grid-alt'></i>Dashboard</a>
-      <a class="sb-link"        data-p="hydration" onclick="go('hydration')"><i class='bx bx-droplet'></i>Hidratacao</a>
-      <a class="sb-link"        data-p="exercises" onclick="go('exercises')"><i class='bx bx-dumbbell'></i>Exercicios</a>
-      <a class="sb-link"        data-p="diet"      onclick="go('diet')"><i class='bx bx-food-menu'></i>Alimentacao</a>
+      <a class="sb-link"        data-p="hydration" onclick="go('hydration')"><i class='bx bx-droplet'></i>Hidratação</a>
+      <a class="sb-link"        data-p="exercises" onclick="go('exercises')"><i class='bx bx-dumbbell'></i>Exercícios</a>
+      <a class="sb-link"        data-p="diet"      onclick="go('diet')"><i class='bx bx-food-menu'></i>Alimentação</a>
       <div class="sb-section">Planejamento</div>
       <a class="sb-link"        data-p="routine"   onclick="go('routine')"><i class='bx bx-calendar-check'></i>Minha Rotina</a>
       <a class="sb-link"        data-p="progress"  onclick="go('progress')"><i class='bx bx-bar-chart-alt-2'></i>Progresso</a>
@@ -176,7 +176,7 @@
     <main class="page active" id="page-root" data-page="dashboard">
       <div class="page-loading">
         <i class='bx bx-loader-alt bx-spin'></i>
-        Carregando pagina...
+        Carregando página...
       </div>
     </main>
 
@@ -186,8 +186,8 @@
   <!-- ── Nav mobile ────────────────────────────────────────── -->
   <nav class="bottom-nav">
     <ul>
-      <li><button class="bn-item active" data-p="dashboard" onclick="go('dashboard')"><i class='bx bx-grid-alt'></i><span>Inicio</span></button></li>
-      <li><button class="bn-item"        data-p="hydration" onclick="go('hydration')"><i class='bx bx-droplet'></i><span>Agua</span></button></li>
+      <li><button class="bn-item active" data-p="dashboard" onclick="go('dashboard')"><i class='bx bx-grid-alt'></i><span>Início</span></button></li>
+      <li><button class="bn-item"        data-p="hydration" onclick="go('hydration')"><i class='bx bx-droplet'></i><span>Água</span></button></li>
       <li><button class="bn-item"        data-p="exercises" onclick="go('exercises')"><i class='bx bx-dumbbell'></i><span>Treinos</span></button></li>
       <li><button class="bn-item"        data-p="diet"      onclick="go('diet')"><i class='bx bx-food-menu'></i><span>Dieta</span></button></li>
       <li><button class="bn-item"        data-p="progress"  onclick="go('progress')"><i class='bx bx-bar-chart-alt-2'></i><span>Progresso</span></button></li>

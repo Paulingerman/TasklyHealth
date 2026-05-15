@@ -1188,3 +1188,68 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 [data-theme="light"] .progress-profile-card,[data-theme="light"] .progress-radar-card{background:linear-gradient(145deg,#ffffff,#f8fafc)}[data-theme="light"] .profile-score-row div,[data-theme="light"] .radar-label-item{background:#fff}[data-theme="light"] .progress-week-ring::after{background:var(--surface-2)}
 @media(max-width:1180px){.progress-showcase{grid-template-columns:1fr}.progress-profile-card{min-height:auto}.progress-stats-strip{grid-template-columns:1fr 1fr}.progress-content-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.progress-page-head,.progress-card-top,.progress-section-title{flex-direction:column;align-items:stretch}.progress-stats-strip{grid-template-columns:1fr}.progress-weekline{grid-template-columns:repeat(2,1fr)}.progress-goals-list{grid-template-columns:1fr}.radar-labels{grid-template-columns:repeat(2,1fr)}.progress-avatar-wrap{width:94px;height:94px}.progress-avatar{width:94px;height:94px;font-size:2rem}}
+
+
+/* Ajustes de formulário e hidratação para apresentação */
+input.no-spinner::-webkit-outer-spin-button,
+input.no-spinner::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input.no-spinner,
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.input-hint {
+  margin: .25rem 0 0;
+  color: var(--text-3);
+  font-size: .75rem;
+  line-height: 1.45;
+}
+
+.hyd-remaining {
+  display: block;
+  margin-top: .45rem;
+  color: var(--text-2);
+  font-size: .82rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.hyd-custom-box,
+.hyd-goal-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-l);
+  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+}
+
+.hyd-custom-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .75rem;
+  align-items: center;
+  margin-top: .75rem;
+}
+
+.hyd-tip-card {
+  border-color: rgba(0, 210, 168, .25);
+}
+
+#hydTip {
+  margin: 0;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+@media (max-width: 720px) {
+  .hyd-custom-row {
+    grid-template-columns: 1fr;
+  }
+}

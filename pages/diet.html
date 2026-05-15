@@ -80,10 +80,10 @@
     <div class="custom-food-panel" id="customFoodPanel">
       <div class="custom-food-form modern-custom-food-form">
         <input class="field-input" id="cfName" placeholder="Nome do alimento">
-        <input class="field-input" id="cfCal" type="number" min="0" placeholder="kcal">
-        <input class="field-input" id="cfProt" type="number" min="0" step="0.1" placeholder="Prot g">
-        <input class="field-input" id="cfCarb" type="number" min="0" step="0.1" placeholder="Carb g">
-        <input class="field-input" id="cfFat" type="number" min="0" step="0.1" placeholder="Gord g">
+        <input class="field-input no-spinner" id="cfCal" type="text" inputmode="numeric" data-only="integer" data-min="0" placeholder="kcal">
+        <input class="field-input no-spinner" id="cfProt" type="text" inputmode="decimal" data-only="decimal" data-min="0" placeholder="Prot g">
+        <input class="field-input no-spinner" id="cfCarb" type="text" inputmode="decimal" data-only="decimal" data-min="0" placeholder="Carb g">
+        <input class="field-input no-spinner" id="cfFat" type="text" inputmode="decimal" data-only="decimal" data-min="0" placeholder="Gord g">
         <button class="btn btn-primary" onclick="saveCustomFood()"><i class='bx bx-save'></i>Salvar</button>
       </div>
     </div>
