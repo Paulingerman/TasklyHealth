@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   exercises.js — Catalogo, fichas de treino e timer local
+   exercises.js — Catálogo, fichas de treino e timer local
 ═══════════════════════════════════════════════════════════════ */
 
 let exFilter = 'Todos';
@@ -434,7 +434,7 @@ function renderLoadInputs(ex) {
   wrap.innerHTML = Array.from({ length: setsCount }, (_, i) => {
     const n = i + 1;
     const prev = saved['s' + n] || '';
-    return `<div style="display:flex;align-items:center;gap:.75rem;"><span style="font-size:.75rem;font-weight:700;color:var(--text-3);min-width:54px">Serie ${n}</span><div style="position:relative;flex:1"><input type="number" inputmode="decimal" step="0.5" min="0" id="load_s${n}" value="${prev}" placeholder="${prev || 'kg'}" style="width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-m);padding:.5rem .75rem;color:var(--title);font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;box-sizing:border-box;outline:none" oninput="saveLoad(${ex.id},${setsCount})"/><span style="position:absolute;right:.65rem;top:50%;transform:translateY(-50%);font-size:.7rem;font-weight:700;color:var(--text-3);pointer-events:none">kg</span></div>${prev ? `<span style="font-size:.7rem;color:var(--text-3);white-space:nowrap">ant: ${prev}kg</span>` : '<span style="min-width:60px"></span>'}</div>`;
+    return `<div style="display:flex;align-items:center;gap:.75rem;"><span style="font-size:.75rem;font-weight:700;color:var(--text-3);min-width:54px">Serie ${n}</span><div style="position:relative;flex:1"><input type="text" inputmode="decimal" data-only="decimal" data-min="0" id="load_s${n}" value="${prev}" placeholder="${prev || 'kg'}" style="width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-m);padding:.5rem .75rem;color:var(--title);font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;box-sizing:border-box;outline:none" oninput="saveLoad(${ex.id},${setsCount})"/><span style="position:absolute;right:.65rem;top:50%;transform:translateY(-50%);font-size:.7rem;font-weight:700;color:var(--text-3);pointer-events:none">kg</span></div>${prev ? `<span style="font-size:.7rem;color:var(--text-3);white-space:nowrap">ant: ${prev}kg</span>` : '<span style="min-width:60px"></span>'}</div>`;
   }).join('');
 }
 
